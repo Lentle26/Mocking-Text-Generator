@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mock Text</title>
+	</head>
+	<body>
+	    <!--Header text and image-->
+		<h1>Enter text to generate a mocking version of it</h1>
+		<img src="https://i.kym-cdn.com/entries/icons/original/000/022/940/mockingspongebobbb.jpg" width="400" height="225"  alt="Mocking Spongebob"><br>
+		
+		<!-- Input box-->
+	    Input: <br><textarea name="input" id="input" rows=15 cols = 75/></textarea><br>
+		
+		<!-- Go button-->
+		<button onclick="buttonFunction()">Go!</button>
+        
+        <!-- Output button-->
+        <br><br>Output: <br><textarea name="outBox" id="outBox" rows=15 cols = 75/></textarea><br> 
+        
+        <!--Javascript-->
+        <script>
+        //Make the output box read only so the user can't edit it, only copy from it.
+        document.getElementById("outBox").readOnly = true;
+        
+        //Function to generate the text
+        function buttonFunction()
+        {
+            //Get the input from the input box
+            input = document.getElementById('input').value;
+            
+            //String for output
+            var output = "";
+            //The range for the number generator starts at 2 so it's 50/50 chance of uppercase or lower
+            var max = 2;
+            
+            //For each chracter in the string
+            for(var c = 0; c < input.length; c++)
+            {
+                //Grab the first character in input
+                var chr = input.charAt(c);
+                //Generate a number 0-max-1
+                var random =Math.floor(Math.random() * max)
+                
+                
+                //If it's anything but 0 make it uppercase
+                if(random != 0)
+                {
+                    chr = chr.toUpperCase();
+                    //Increase the chance of a lowercase chracter next
+                    max--;
+                }//End if
+                //Otherwise make it a lowercase character
+                else
+                {
+                    chr = chr.toLowerCase();
+                    //Increase the chance of a uppercase character next
+                    max++;
+                }//End else
+                //Append the modified character to the new string.
+                
+                
+                output = output+chr;
+            }//End for
+            
+            document.getElementById("outBox").value = output;
+        }//End of buttonFunction
+        </script>
+	</body>
+</html>
